@@ -1,0 +1,9 @@
+<div id="square-matrix">
+    <div class="square-row" *ngFor="let squareRow of squareMatrix; let i = index">
+        <div class="square" *ngFor="let square of squareRow" [class.opened]="square.isOpen"
+            (click)="onClick(square)" 
+            (contextmenu)="onRightClick($event, square)">
+            <span>{{square.content !== 0 ? square.content : ''}}</span>
+        </div>
+    </div>
+</div>

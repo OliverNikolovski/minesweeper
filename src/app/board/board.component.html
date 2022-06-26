@@ -1,0 +1,14 @@
+<div class="board">
+    <app-game-status (gameOverEvent)="showPlayAgainButton()"
+    (scoreEmitter)="saveScore($event)"></app-game-status>
+    <app-mine-field [squareMatrix]="squareMatrix" [numberOfMines]="numberOfMines"
+        [numberOfSquaresLeft]="numberOfSquaresLeft"
+        (squareClickedEvent)="openSquare($event)" 
+        (gameWonEvent)="gameWon()"
+        (gameLostEvent)="gameLost()"
+        (squareFlaggedEvent)="flagSquare($event)"></app-mine-field>
+    <p class="game-result" [class.game-won]="gameResult === 'You Won!'" 
+    [class.game-lost]="gameResult === 'You Lost!'">{{ gameResult }}</p>
+    <p *ngIf="score && gameResult === 'You Won!'" class="score">Time: <span>{{score}}</span></p>
+    <button type="button" *ngIf="playAgain" (click)="prepareNewSquareMatrix()">Play Again</button>
+</div>
