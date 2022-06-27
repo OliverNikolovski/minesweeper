@@ -67,8 +67,14 @@ export class BoardComponent implements OnInit {
   }
 
   flagSquare(square: Square): void {
-    square.isFlagged = true;
-    square.content = '🚩';
+    if (square.isFlagged) {
+      square.isFlagged = false;
+      square.content = '';
+    }
+    else {
+      square.isFlagged = true;
+      square.content = '🚩';
+    }
   }
 
   gameWon(): void {

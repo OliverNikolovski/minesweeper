@@ -30,7 +30,7 @@ export class MineFieldComponent implements OnInit {
       this.started = true;
       this.gameService.notifyStart();
     }
-    if (square.isOpen)
+    if (square.isOpen || square.isFlagged)
       return;
     if (square.isMined) {
       this.gameService.notifyStop();
@@ -46,7 +46,7 @@ export class MineFieldComponent implements OnInit {
 
   onRightClick(event: MouseEvent, square: Square): void {
     event.preventDefault();
-    if (square.isOpen || square.isFlagged)
+    if (square.isOpen)
       return;
     if (!this.started) {
       this.started = true;
